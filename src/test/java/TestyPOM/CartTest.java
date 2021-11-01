@@ -5,6 +5,7 @@ import PageObjects.ProductPage;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CartTest extends TestBase {
@@ -22,7 +23,7 @@ public class CartTest extends TestBase {
     ProductPage productPage = new ProductPage(driver);
     boolean isProductInCart = productPage.goTo(productUrl).addToCart().viewCart().isProductInCart(productId);
 
-    Assertions.assertThat(isProductInCart)
+    assertThat(isProductInCart)
             .overridingErrorMessage("Remove button was not found for a product with id=%s.", productId)
             .isTrue();
   }
@@ -34,7 +35,7 @@ public class CartTest extends TestBase {
     CategoryPage categoryPage = new CategoryPage(driver);
     boolean isProductInCart = categoryPage.goTo(categoryUrl).addToCart(productId).viewCart().isProductInCart(productId);
 
-    Assertions.assertThat(isProductInCart)
+    assertThat(isProductInCart)
             .overridingErrorMessage("Remove button was not found for a product with id=%s.", productId)
             .isTrue();
   }
@@ -45,7 +46,7 @@ public class CartTest extends TestBase {
     ProductPage productPage = new ProductPage(driver);
     int numberOfProducts = productPage.goTo(productUrl).addToCartMultipleTimes(10).viewCart().getQuantityOfProduct();
 
-    Assertions.assertThat(numberOfProducts)
+    assertThat(numberOfProducts)
             .overridingErrorMessage("Expected number is 10, actual - %s", numberOfProducts)
             .isEqualTo(10);
   }
