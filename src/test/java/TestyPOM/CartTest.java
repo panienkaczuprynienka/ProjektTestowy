@@ -52,7 +52,7 @@ public class CartTest extends TestBase {
   }
 
   @Test
-  public void addTenProductsToCartTest() {
+  public void addTenProductsToCartTest1() {
     ProductPage productPage = new ProductPage(driver);
     for (String product : productPages) {
       productPage.goTo(baseUrl + "/product" + product).addToCart();
